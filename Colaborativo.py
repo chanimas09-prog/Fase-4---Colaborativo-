@@ -61,25 +61,44 @@ class Cliente(EntidadSistema):
 
 
 
+
     
+
+# trabaje la herencia y el poliformismo
+
 class Servicios:
-  def__init__(self, alquiler_de_equipos, salas_de_reunion, asesorias_especializadas):
-  self.alquiler_de_equipos = alquiler_de_equipos
-  self.salas_de_reunion = salas_de_reuninon
-  self.asesorias_especializadas = asesorias_especializadas 
+  def mostrar_detalles(self):
+  return "informacion general de servicios"
+class alquilerequipos(Servicios):
+  def mostrar_detalles(self):
+  return "alquiler de equipos de oficina, portatiles"
+class salasreunion(Servicios):
+  def mostrar_detalles(self):
+  return "salas de reunion, equipos para videoconferencias"
+class asesoriasespecializadas(Servicios):
+  def mostar_detalles(self):
+  return "asesorias especializadas, asesorias legales
   
 class reservas:
   def__init__(self, cliente, servicios):
   self.cliente = cliente
   self.servicios = servicios
   def mostrar info(self):
-  print("cliente:{self.cliente} servicios:{self.servicios}")
-  c1=cliente ("ana")
-  s1=servicios ("alquiler de equipos, salas de reunion, asesorias especializadas")
-  r1=reservas(c1,s1)
-  r1.mostrar info()
+  print(f"cliente:{self.cliente} / servicios:{self.servicios.mostrardetalles}")
 
-  
+servicio = salasreunion()
+reserva = reserva ("ana",servicio)
+reserva.mostrar_info()
+
+
+
+
+
+
+
+ 
+
+ 
 
 
 
