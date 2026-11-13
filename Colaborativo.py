@@ -60,35 +60,40 @@ class Cliente(EntidadSistema):
     return f"Cliente:{self.nombre} | Correo: {self.correo}" 
 
 
-
-
-    
-
-# trabaje la herencia y el poliformismo
+# 3. Herencia y Polomorfismo (trabaje la herencia y el poliformismo)
 
 class Servicios:
-  def mostrar_detalles(self):
-  return "informacion general de servicios"
-class alquilerequipos(Servicios):
-  def mostrar_detalles(self):
-  return "alquiler de equipos de oficina, portatiles"
-class salasreunion(Servicios):
-  def mostrar_detalles(self):
-  return "salas de reunion, equipos para videoconferencias"
-class asesoriasespecializadas(Servicios):
-  def mostar_detalles(self):
-  return "asesorias especializadas, asesorias legales
-  
-class reservas:
-  def__init__(self, cliente, servicios):
-  self.cliente = cliente
-  self.servicios = servicios
-  def mostrar info(self):
-  print(f"cliente:{self.cliente} / servicios:{self.servicios.mostrardetalles}")
+    def mostrar_detalles(self):
+        return "Informacion general de servicios"
 
-servicio = salasreunion()
-reserva = reserva ("ana",servicio)
-reserva.mostrar_info()
+class AlquilerEquipos(Servicios):
+  def mostrar_detalles(self):
+      return "Alquiler de equipos de oficina, portatiles"
+    
+class SalasReunion(Servicios):
+  def mostrar_detalles(self):
+      return "Salas de reunion, equipos para videoconferencias"
+
+      class AsesoriasEspecializadas(Servicios):
+  def mostar_detalles(self):
+      return "Asesorias especializadas, asesorias legales"
+
+
+# 4. Clase Reserva 
+      
+class Reservas:
+  def __init__(self, cliente, servicios):
+      self.cliente = cliente
+      self.servicios = servicios
+
+def mostrar_info(self):
+    detalles_servicios = self.servicio.mostrar_detalles()
+    LoggerSistema.registrar(f"Reserva generada para {self.cliente.nombre} con servicio: {detalles_servicio}")
+    print(f"-- DETALLES DE LA RESERVA --")
+    print(f"Cliente:{self.cliente.nombre}")
+    print(f"Servicio contratado: {detalles_servicio}")
+    print("-----------------------------")
+    
 
 
 
