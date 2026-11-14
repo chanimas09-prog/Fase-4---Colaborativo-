@@ -78,21 +78,45 @@ class SalasReunion(Servicios):
   def mostar_detalles(self):
       return "Asesorias especializadas, asesorias legales"
 
+  # 4  clases de Reserva:
 
-# 4. Clase Reserva 
-      
-class Reservas:
-  def __init__(self, cliente, servicios):
-      self.cliente = cliente
-      self.servicios = servicios
+    def __init__(self, cliente, servicio, fecha_reserva=None):
+        if not isinstance(cliente, Cliente):
+            LoggerSistema.registrar(
+                "Intento de crear reserva con un cliente inválido.", tipo="ERROR"
+            )
+            raise ErrorValidacionException("El objeto 'cliente' debe ser una instancia de Cliente.")
 
-def mostrar_info(self):
-    detalles_servicios = self.servicio.mostrar_detalles()
-    LoggerSistema.registrar(f"Reserva generada para {self.cliente.nombre} con servicio: {detalles_servicio}")
-    print(f"-- DETALLES DE LA RESERVA --")
-    print(f"Cliente:{self.cliente.nombre}")
-    print(f"Servicio contratado: {detalles_servicio}")
-    print("-----------------------------")
+        if not isinstance(servicio, Servicios):
+            LoggerSistema.registrar(
+                f"Intento de crear reserva inválida para {cliente.nombre}.", tipo="ERROR"
+            )
+            raise ErrorValidacionException("El objeto 'servicio' debe ser una instancia de Servicios.")
+
+        self.cliente = cliente
+        self.servicio = servicio
+        self.fecha_reserva = fecha_reserva or datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    def resumen(self):
+        detalles_servicio = self.servicio.mostrar_detalles()
+        return (
+            f"-- DETALLES DE LA RESERVA --\n"
+            f"Fecha: {self.fecha_reserva}\n"
+            f"Cliente: {self.cliente.nombre} (ID: {self.cliente.id_entidad})\n"
+            f"Servicio contratado: {detalles_servicio}\n"
+            f"-----------------------------"
+        )
+
+    def mostrar_info(self):
+        detalles_servicio = self.servicio.mostrar_detalles()
+        LoggerSistema.registrar(
+            f"Reserva generada para {self.cliente.nombre} con servicio: {detalles_servicio}",
+            tipo="INFO",
+        )
+        print(self.resumen())
+
+
+
     
 
 
